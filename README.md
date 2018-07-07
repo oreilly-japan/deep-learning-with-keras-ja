@@ -54,9 +54,8 @@ Windows
 [Miniconda](https://conda.io/miniconda.html)を導入して下さい
 
 ```
-conda create -n anomaly python=3 numpy scipy scikit-learn pandas matplotlib statsmodels jupyter
+conda create -n keras-ja python=3 numpy scipy scikit-learn pandas matplotlib jupyter
 activate anomaly
-pip install beautifulsoup4 lxml
 ````
 
 ### 使用方法
