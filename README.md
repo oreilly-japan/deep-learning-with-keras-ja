@@ -10,7 +10,54 @@
 
 ## サンプルコード
 
+### ファイル構成
+
+|フォルダ名 |説明                         |
+|:--        |:--                          |
+|ch01       |1章で使用するソースコードとライブラリ導入に必要なrequirements.txt    |
+|ch02       |2章で使用するソースコードとライブラリ導入に必要なrequirements.txt     |
+|...        |...                          |
+|ch08       |8章で使用するソースコードとライブラリ導入に必要なrequirements.txt     |
+
 サンプルコードの解説は本書籍をご覧ください。
+
+## 仮想環境の準備
+
+環境構築の方法は読者に任せていますが、一般的には仮想環境を構築する方法を推奨されるのでその方法を記述しておきます。
+
+`pyenv`と`virtualenv`の導入をします。
+
+linux
+```
+apt-get install pyenv
+apt-get install virtualenv
+```
+Mac
+```
+brew install pyenv
+brew install virtualenv
+```
+
+`pyenv`と`virtualenv`を用いて仮想環境を構築します。
+
+```
+pyenv install 3.6.0
+pyenv rehash
+pyenv local 3.6.0
+virtualenv -p ~/.pyenv/versions/3.6.0/bin/python3.6 my_env
+source my_env/bin/activate
+
+```
+
+Windows
+
+[Miniconda](https://conda.io/miniconda.html)を導入して下さい
+
+```
+conda create -n anomaly python=3 numpy scipy scikit-learn pandas matplotlib statsmodels jupyter
+activate anomaly
+pip install beautifulsoup4 lxml
+````
 
 ### 使用方法
 
@@ -23,6 +70,14 @@ $ pip install -r requirements.txt
 CPU用の`requirements.txt`とGPU用の`requirements_gpu.txt`を章ごとに用意してあります。
 
 > 巻末の付録Aで、GPUを考慮した開発環境の構築について補足していますので参考にしてください。
+
+各章のフォルダへ移動して、Pythonコマンドを実行します。書籍にどのpythonコードを動作させているか明記しています。
+下記は一例です。
+
+```
+cd ch03
+python cifar10_deep_with_aug.py
+```
 
 ## 実行環境
 
@@ -57,7 +112,7 @@ CPU用の`requirements.txt`とGPU用の`requirements_gpu.txt`を章ごとに用�
 
 ##### GPUを使用する場合
 
-* tensorflow-gpu 1.6.0
+* tensorflow-gpu 1.8.0
 * cuda 9.0
 * cuDNN 7.0.5
 

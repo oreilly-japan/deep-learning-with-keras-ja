@@ -1,0 +1,6 @@
+keras==2.1.6
+tensorflow==1.8.0
+gym==0.10.5
+pygame==1.9.3
+h5py==2.7.1
+doom_py==0.0.15
