@@ -51,12 +51,8 @@ source my_env/bin/activate
 
 Windows
 
-[Miniconda](https://conda.io/miniconda.html)を導入して下さい
+[Anaconda](https://www.anaconda.com/download/#windows)を導入して下さい
 
-```
-conda create -n keras-ja python=3 numpy scipy scikit-learn pandas matplotlib jupyter
-activate anomaly
-````
 
 ### 使用方法
 
