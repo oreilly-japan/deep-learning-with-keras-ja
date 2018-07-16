@@ -1,12 +1,12 @@
 import os
 import keras
 from keras.applications.inception_v3 import InceptionV3
-from keras.models import Model
+from keras.models import Model, load_model
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.datasets import cifar10
 from keras.optimizers import RMSprop
 from keras.optimizers import SGD
-from keras.callbacks import TensorBoard, ModelCheckpoint
+from keras.callbacks import TensorBoard, ModelCheckpoint, EarlyStopping
 from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import cv2
@@ -29,8 +29,6 @@ class CIFAR10Dataset():
     def __init__(self):
         self.image_shape = (190, 190, 3)
         self.num_classes = 10
-        self.train_data_size = 5000
-        self.test_data_size = 5000
 
     def upscale(self, x, data_size):
         data_upscaled = np.zeros((data_size,
@@ -46,10 +44,6 @@ class CIFAR10Dataset():
     def get_batch(self):
         (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
-        x_train = x_train[:self.train_data_size]
-        y_train = y_train[:self.train_data_size]
-        x_test = x_test[:self.test_data_size]
-        y_test = y_test[:self.test_data_size]
         x_train = self.upscale(x_train, x_train.shape[0])
         x_test = self.upscale(x_test, x_test.shape[0])
 
@@ -123,7 +117,8 @@ class Trainer():
             validation_data=(x_valid, y_valid),
             callbacks=[
                 TensorBoard(log_dir=self.log_dir),
-                ModelCheckpoint(model_path, save_best_only=True)
+                ModelCheckpoint(model_path, save_best_only=True),
+                EarlyStopping(),
             ],
             verbose=self.verbose,
             workers=4
@@ -141,6 +136,7 @@ trainer = Trainer(model, loss="categorical_crossentropy", optimizer=RMSprop())
 trainer.train(
     x_train, y_train, batch_size=26, epochs=8, validation_split=0.2
     )
+model = load_model(os.path.join(trainer.log_dir, trainer.model_file_name))
 
 for layer in model.layers[:249]:
     layer.trainable = False
@@ -152,6 +148,7 @@ trainer = Trainer(model, loss="categorical_crossentropy",
 trainer.train(
     x_train, y_train, batch_size=26, epochs=8, validation_split=0.2
 )
+model = load_model(os.path.join(trainer.log_dir, trainer.model_file_name))
 
 # show result
 score = model.evaluate(x_test, y_test, verbose=0)
