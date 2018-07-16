@@ -27,6 +27,11 @@ def network():
 class CIFAR10Dataset():
 
     def __init__(self):
+        """
+        Setting image size for inceptionv3
+        Reference
+            https://keras.io/applications/#inceptionv3
+        """
         self.image_shape = (190, 190, 3)
         self.num_classes = 10
 
