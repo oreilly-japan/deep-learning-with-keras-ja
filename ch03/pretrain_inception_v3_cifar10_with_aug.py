@@ -34,6 +34,8 @@ class CIFAR10Dataset():
         """
         self.image_shape = (190, 190, 3)
         self.num_classes = 10
+        self.train_data_size = 5000
+        self.test_data_size = 5000
 
     def upscale(self, x, data_size):
         data_upscaled = np.zeros((data_size,
@@ -49,6 +51,10 @@ class CIFAR10Dataset():
     def get_batch(self):
         (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
+        x_train = x_train[:self.train_data_size]
+        y_train = y_train[:self.train_data_size]
+        x_test = x_test[:self.test_data_size]
+        y_test = y_test[:self.test_data_size]
         x_train = self.upscale(x_train, x_train.shape[0])
         x_test = self.upscale(x_test, x_test.shape[0])
 
