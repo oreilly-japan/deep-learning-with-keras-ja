@@ -121,4 +121,19 @@ python cifar10_deep_with_aug.py
 
 ## 正誤表
 
-まだありません。誤植など間違いを見つけた方は、japan@oreilly.co.jpまでお知らせください。
+下記の誤りがありました。お詫びして訂正いたします。
+
+本ページに掲載されていない誤植など間違いを見つけた方は、japan@oreilly.co.jpまでお知らせください。
+
+### 第1刷
+
+#### ■1章 P.22 1行目
+
+**誤**
+```
+from keras.layersimport Dense, Dropout, Activation
+```
+**正**
+```
+from keras.layers import Dense, Dropout, Activation
+```
