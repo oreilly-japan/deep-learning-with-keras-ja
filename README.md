@@ -111,6 +111,21 @@ python cifar10_deep_with_aug.py
 * cuda 9.0
 * cuDNN 7.0.5
 
+##### Macで使用する場合の注意点
+
+`matplotlib`を標準設定のまま使用すると下記のようなエラーが発生します。これはMacで設定されている標準の画像レンダリングAPIが`matplotlib`で使用するものと異なるためです。
+
+```
+RuntimeError: Python is not installed as a framework. The Mac OS X backend will not be able to function correctly if Python is not installed as a framework. See the Python documentation for more information on installing Python as a framework on Mac OS X. Please either reinstall Python as a framework, or try one of the other backends. If you are using (Ana)Conda please install python.app and replace the use of 'python' with 'pythonw'. See 'Working with Matplotlib on OSX' in the Matplotlib FAQ for more information.
+```
+
+`matplotlib`を使用する前に下記のように画像レンダリングAPIを設定して使用してください。
+
+```py
+import matplotlib as mpl
+mpl.use('TkAgg')
+```
+
 #### 動作確認済みハードウェア
 
  * Ubuntu 16.04 LTS（GPU：GeForce GTX 1080）
