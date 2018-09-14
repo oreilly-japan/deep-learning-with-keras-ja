@@ -152,3 +152,15 @@ from keras.layersimport Dense, Dropout, Activation
 ```
 from keras.layers import Dense, Dropout, Activation
 ```
+
+#### ■6章 P.177 10行目
+
+
+**誤**
+```
+今回の場合、語彙数は42です。
+```
+**正**
+```
+今回の場合、語彙数は60です。
+```
