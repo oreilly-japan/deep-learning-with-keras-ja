@@ -143,7 +143,6 @@ mpl.use('TkAgg')
 ### 第1刷
 
 #### ■1章 P.22 1行目
-
 **誤**
 ```
 from keras.layersimport Dense, Dropout, Activation
@@ -153,9 +152,17 @@ from keras.layersimport Dense, Dropout, Activation
 from keras.layers import Dense, Dropout, Activation
 ```
 
+#### ■4章 P.112 1行目
+**誤**
+```
+DCGGAN生成モデルは、以下のKerasコードで実装できます。
+```
+**正**
+```
+DCGAN生成モデルは、以下のKerasコードで実装できます。
+```
+
 #### ■6章 P.177 10行目
-
-
 **誤**
 ```
 今回の場合、語彙数は42です。
