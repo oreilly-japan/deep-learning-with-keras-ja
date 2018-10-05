@@ -15,9 +15,9 @@
 |フォルダ名 |説明                         |
 |:--        |:--                          |
 |ch01       |1章で使用するソースコードとライブラリ導入に必要なrequirements.txt    |
-|ch02       |2章で使用するソースコードとライブラリ導入に必要なrequirements.txt     |
+|ch02       |2章で使用するソースコードとライブラリ導入に必要なrequirements.txt    |
 |...        |...                          |
-|ch08       |8章で使用するソースコードとライブラリ導入に必要なrequirements.txt     |
+|ch08       |8章で使用するソースコードとライブラリ導入に必要なrequirements.txt    |
 
 サンプルコードの解説は本書籍をご覧ください。
 
@@ -27,12 +27,12 @@
 
 `pyenv`と`virtualenv`の導入をします。
 
-linux
+**linux**
 ```
 apt-get install pyenv
 apt-get install virtualenv
 ```
-Mac
+**Mac**
 ```
 brew install pyenv
 brew install virtualenv
@@ -46,13 +46,10 @@ pyenv rehash
 pyenv local 3.6.0
 virtualenv -p ~/.pyenv/versions/3.6.0/bin/python3.6 my_env
 source my_env/bin/activate
-
 ```
 
-Windows
-
-[Anaconda](https://www.anaconda.com/download/#windows)を導入して下さい
-
+**Windows**
+[Anaconda](https://www.anaconda.com/download/#windows)を導入して下さい。
 
 ### 使用方法
 
@@ -67,6 +64,7 @@ CPU用の`requirements.txt`とGPU用の`requirements_gpu.txt`を章ごとに用�
 > 巻末の付録Aで、GPUを考慮した開発環境の構築について補足していますので参考にしてください。
 
 各章のフォルダへ移動して、Pythonコマンドを実行します。書籍にどのpythonコードを動作させているか明記しています。
+
 下記は一例です。
 
 ```
@@ -152,6 +150,40 @@ from keras.layersimport Dense, Dropout, Activation
 from keras.layers import Dense, Dropout, Activation
 ```
 
+#### ■2章 P.67 脚注
+**誤**
+```
+前：package_data=’quiver_engine’: ’quiverboard/dist/*’,
+後：package_data=’quiver_engine’: [’quiverboard/dist/*’],
+```
+**正**
+```
+前：package_data={'quiver_engine': 'quiverboard/dist/*'},
+後：package_data={'quiver_engine': ['quiverboard/dist/*']},
+```
+
+#### ■3章 P.96 8～13行目
+**誤**
+```
+from pathlib import Path
+import pathlib
+import numpy as np
+from PIL import Image
+from keras.models import load_model
+
+model_path = "logdir/model_file.hdf5"
+```
+**正**
+```
+from pathlib import Path
+import numpy as np
+from PIL import Image
+from keras.models import load_model
+
+model_path = "
+logdir_cifar10_deep_with_aug/model_file.hdf5"
+```
+
 #### ■4章 P.112 1行目
 **誤**
 ```
@@ -170,4 +202,16 @@ DCGAN生成モデルは、以下のKerasコードで実装できます。
 **正**
 ```
 今回の場合、語彙数は60です。
+```
+
+#### ■6章 P.179 35～36行目
+**誤**
+```
+        for i, ch in enumerate(test_chars):
+            Xtest[0, i, char2index[ch]] = 1
+```
+**正**
+```
+        for j, ch in enumerate(test_chars):
+            Xtest[0, j, char2index[ch]] = 1
 ```
