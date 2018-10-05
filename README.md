@@ -181,8 +181,7 @@ import numpy as np
 from PIL import Image
 from keras.models import load_model
 
-model_path = "
-logdir_cifar10_deep_with_aug/model_file.hdf5"
+model_path = "logdir_cifar10_deep_with_aug/model_file.hdf5"
 ```
 
 #### ■4章 P.112 1行目
