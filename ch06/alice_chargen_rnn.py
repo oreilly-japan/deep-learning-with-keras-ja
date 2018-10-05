@@ -91,8 +91,8 @@ for iteration in range(NUM_ITERATIONS):
     print(test_chars, end="")
     for i in range(NUM_PREDS_PER_EPOCH):
         Xtest = np.zeros((1, SEQLEN, nb_chars))
-        for i, ch in enumerate(test_chars):
-            Xtest[0, i, char2index[ch]] = 1
+        for j, ch in enumerate(test_chars):
+            Xtest[0, j, char2index[ch]] = 1
         pred = model.predict(Xtest, verbose=0)[0]
         ypred = index2char[np.argmax(pred)]
         print(ypred, end="")
