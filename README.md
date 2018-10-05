@@ -49,6 +49,7 @@ source my_env/bin/activate
 ```
 
 **Windows**
+
 [Anaconda](https://www.anaconda.com/download/#windows)を導入して下さい。
 
 ### 使用方法
