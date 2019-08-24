@@ -16,7 +16,7 @@ from keras.callbacks import TensorBoard
 class bAbI():
 
     def __init__(self, use_10k=True, data_root="", padding="PAD"):
-        self.url = "https://s3.amazonaws.com/fair-data/parlai/babi/babi.tar.gz"  # noqa
+        self.url = "http://www.thespermwhale.com/jaseweston/babi/tasks_1-20_v1-2.tar.gz"  # noqa
         self.vocab = []
         self.story_size = -1
         self.question_size = -1
@@ -38,7 +38,7 @@ class bAbI():
 
     def _get_location(self, kind="train"):
         file_name = "qa1_single-supporting-fact_{}.txt".format(kind.lower())
-        return os.path.join(self.data_dir, file_name)
+        return self.data_dir + "/" + file_name
 
     def download(self):
         tar_file = os.path.basename(self.url)
