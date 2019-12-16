@@ -1,5 +1,5 @@
 keras==2.1.6
-tensorflow==1.8.0
+tensorflow==1.15.0
 h5py==2.7.1
 nltk==3.2.5
 sklearn==0.0
