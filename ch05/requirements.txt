@@ -1,5 +1,5 @@
 keras==2.1.6
-tensorflow==1.8.0
+tensorflow==1.15.4
 h5py==2.7.1
 matplotlib==2.1.1
 gensim==3.2.0
