@@ -2,5 +2,5 @@ keras==2.1.2
 tensorflow-gpu==1.8.0
 h5py==2.7.1
 matplotlib==2.1.1
-PIllow==5.1.0
+PIllow==8.3.2
 pandas==0.22.0
