@@ -1,5 +1,5 @@
 keras==2.1.2
-tensorflow==1.8.0
+tensorflow==2.6.4
 h5py==2.7.1
 matplotlib==2.1.1
 PIllow==5.1.0
