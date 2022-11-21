@@ -1,5 +1,5 @@
 keras==2.1.6
-tensorflow-gpu==1.8.0
+tensorflow-gpu==2.9.3
 gym==0.10.5
 pygame==1.9.3
 h5py==2.7.1
